@@ -1,0 +1,25 @@
+
+<b>คำตอบ: </b>
+<input type="text" id="answer" value="0123">
+<hr>
+<b>เฉลย</b>
+<br>
+<div id="readable-answer"></div>
+<script>
+function convert_answer(answer){
+   var length = answer.length*2;
+   return ('0'.repeat(length) + parseInt(answer, 16).toString(4)).slice(length*-1).split('').map(function(base4){
+      return ['A','B','C','D'][base4];
+   });
+}
+var $answer = document.getElementById('answer'),
+  renderAnswer = function(){
+    document.getElementById('readable-answer').innerText = convert_answer($answer.value).join(' ');
+  }
+$answer.onchange = renderAnswer;
+$answer.onkeyup = renderAnswer;
+renderAnswer();
+
+</script>
+
+
